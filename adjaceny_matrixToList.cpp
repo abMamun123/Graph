@@ -8,15 +8,13 @@ int main()
     vector<int> adj_list[n + 1];
     int adj_matrix[n + 1][n + 1] = {};
 
-    //connected node
+    // connected node
     for (int i = 1; i <= e; i++)
     {
         int u, v;
         cin >> u >> v;
         adj_matrix[u][v] = 1;
         adj_matrix[v][u] = 1;
-        adj_list[u].push_back(v);
-        adj_list[v].push_back(u);
     }
 
     // print matrix
@@ -28,17 +26,17 @@ int main()
         }
         cout << endl;
     }
-cout<<"----------------------------\n";
-    //print list
-    for (int i = 1; i <= n; i++)
+    cout << "----------------------------\n";
+    // print list
+    for (int i = 0; i < n; i++)
     {
-        cout << i << "-->"
-             << " ";
-        for (auto j : adj_list[i])
+        for (int j = 0; j < n; j++)
         {
-            cout << j << " ";
+            if (adj_matrix[i][j] == 1)
+            {
+                adj_list[i].push_back(j);
+            }
         }
-        cout << endl;
     }
     return 0;
 }
