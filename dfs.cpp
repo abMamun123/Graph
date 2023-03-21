@@ -8,7 +8,7 @@
 4 5
 4 3
 3 6
-*/ 
+*/
 /*
     2 1
     2 3
@@ -18,7 +18,7 @@
     3 4
     3 6
     4 5
-*/ 
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #define max 10000
@@ -47,11 +47,16 @@ int main()
         adj_list[u].push_back(v);
         adj_list[v].push_back(u);
     }
-    // for (int i = 1; i < n; i++)
-    // {
-    //     if (!visited[i])
-    //         dfs(i);
-    // }
-    dfs(2);
+    int count = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        if (!visited[i])
+        {
+            dfs(i);
+            count++;
+        }
+    }
+    cout << endl
+         << count << endl;
     return 0;
 }
