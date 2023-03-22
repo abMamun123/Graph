@@ -6,7 +6,8 @@
 using namespace std;
 int node, edge;
 const int n = 1000;
-int adj_matrix[n][n];
+vector<int> adj_list[n];
+map<int, int> mp;
 int visited[n];
 int level[n]; // new line added
 void BFS(int src)
@@ -21,14 +22,14 @@ void BFS(int src)
         q.pop();
         visited[head] = 1;
         cout << head << " ";
-        for (int i = 0; i <= node; i++)
+        for (int adj_node : adj_list[head])
         {
-            checked[i]++;
-            if (adj_matrix[head][i] == 1 && visited[i] == 0)
+            mp[adj_node]++;
+            if (visited[adj_node] == 0)
             {
-                visited[i] = 1;
-                level[i] = level[head] + 1; // new line added
-                q.push(i);
+                visited[adj_node] = 1;
+                level[adj_node] = level[head] + 1; // new line added
+                q.push(adj_node);
             }
         }
     }
@@ -40,13 +41,14 @@ int main()
     {
         int u, v;
         cin >> u >> v;
-        adj_matrix[u][v] = 1;
-        adj_matrix[v][u] = 1;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
     }
     BFS(0);
-    for (int i = 0; i <= node; i++)
+    cout<<"\n";
+    for (auto it:mp)
     {
-        cout << "node " << i << "--> in level:"<< level[i] << "\n";
+        cout <<it.first<<"-->"<<it.second<< "\n";
     }
 
     return 0;
