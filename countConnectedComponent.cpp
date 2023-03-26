@@ -11,7 +11,6 @@ int visited[n];
 void dfs(int node)
 {
     visited[node] = 1;
-    cout << node << " ";
     for (int adj_node : adj_list[node])
     {
         if (visited[adj_node] == 0)
@@ -30,7 +29,7 @@ int main()
         adj_list[v].push_back(u);
     }
     int count=0;
-    for (int i = 1; i <= node; i++)
+    for (int i = 0; i < node; i++)
     {
         if (!visited[i])
         {
@@ -38,6 +37,6 @@ int main()
             count++;
         }
     }
-    cout << count << endl;
+    cout <<"total component: "<< count << endl;
     return 0;
 }

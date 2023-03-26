@@ -1,14 +1,18 @@
-/**
- *author:Abu Jafar Shiddik
- *created:22-03-2023(21:08:21)
- 3 2
- **/
 /*
-4 4
-1 3
-2 1
-2 4
+NO
+5 4 
+0 1
+1 2
+2 3
 3 4
+
+Yes
+5 5 
+0 1
+1 2
+2 3
+3 4
+4 1
 */ 
 #include <bits/stdc++.h>
 using namespace std;
@@ -58,9 +62,9 @@ int main()
         }
     }
     if(exits_cycle)
-        cout<<"cycle detected";
+        cout<<"YES";
     else
-        cout<<"no cycle detected";    
+        cout<<"NO";    
 
     return 0;
 }

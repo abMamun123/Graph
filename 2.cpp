@@ -3,9 +3,18 @@
  *created:21-03-2023(08:09:41)
  **/
 #include <bits/stdc++.h>
+#include<iostream>
+#include<vector>
 using namespace std;
 const int n = 1e5;
+int node = 6;
 vector<int> adj_list[n];
+adj_list[0] = {1,3,4};
+adj_list[1] = {0,2,5};
+adj_list[2] = {1,4};
+adj_list[3] = {0};
+adj_list[4] = {2,5};
+adj_list[5] = {1,4};
 int visited[n];
 int level[n];
 void bfs(int node){
@@ -29,17 +38,12 @@ void bfs(int node){
 }
 int main()
 {
-    int node, edge;
-    cin >> node >> edge;
-    for (int i = 0; i < edge; i++)
+    for (int i = 0; i < node; i++)
     {
-        int u, v;
-        cin >> u >> v;
-        adj_list[u].push_back(v);
-        adj_list[v].push_back(u);
+        if(visited[i]==0)
+            bfs(0);
     }
-    bfs(0);
-
+    
     for (int i = 0; i < node; i++)
     {
         cout<<"node "<<i<<" level :"<<level[i]<<"\n";
