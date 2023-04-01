@@ -23,7 +23,6 @@ int main()
         cout << i << "->"<< " ";
         for (auto j : adj_list[i])
         {
-            // int var = adj_list[i][j];
             adj_matrix[i][j] = 1;
             adj_matrix[j][i] = 1;
             cout << j << " ";
