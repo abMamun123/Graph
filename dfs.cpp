@@ -23,16 +23,15 @@
 using namespace std;
 #define max 10000
 vector<int> adj_list[max];
-bool visited[max];
+int visited[max];
 void dfs(int node)
 {
-    visited[node] = true;
-    cout << node << " ";
-    for (auto it : adj_list[node])
-    {
-        if (!visited[it])
-        {
-            dfs(it);
+    visited[node] = 1;
+    cout<<node<<" ";
+    for(int adj_node:adj_list[node]){
+        if(visited[adj_node]==0){
+            visited[adj_node];
+            dfs(adj_node);
         }
     }
 };
@@ -40,23 +39,14 @@ int main()
 {
     int n, e;
     cin >> n >> e;
-    for (int i = 1; i <= e; i++)
+    for (int i = 0; i < e; i++)
     {
         int u, v;
         cin >> u >> v;
         adj_list[u].push_back(v);
         adj_list[v].push_back(u);
     }
-    int count = 0;
-    for (int i = 1; i <= n; i++)
-    {
-        if (!visited[i])
-        {
-            dfs(i);
-            count++;
-        }
-    }
-    cout << endl
-         << count << endl;
+ 
+    dfs(0);
     return 0;
 }
