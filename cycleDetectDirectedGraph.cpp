@@ -6,6 +6,7 @@
 using namespace std;
 const int N = 1005;
 int visited[N];
+int parent[N];
 vector<int> adj_list[N];
 bool detect_cycle(int src)
 {
@@ -22,6 +23,7 @@ bool detect_cycle(int src)
         }
         if (visited[adj_node] == 1)
         {
+            parent[adj_node] = src;
             return true;
         }
     }
